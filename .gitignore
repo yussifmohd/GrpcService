@@ -1,0 +1,6 @@
+.vs/
+*/bin/Debug/net8.0/
+*/bin/Release/net8.0/
+*/Properties/PublishProfiles/
+*/obj/
+.idea/
