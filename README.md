@@ -3,7 +3,7 @@
 
 #Overview
   
-  -This solution showcases a modern approach to building scalable and maintainable gRPC services using .NET, featuring:
+  - This solution showcases a modern approach to building scalable and maintainable gRPC services using .NET, featuring:
   
     • A Central gRPC Service – Hosts core business logic for high-performance, contract-first communication
     • Web API Gateway / BFF – Acts as a Backend-for-Frontend, translating HTTP/REST requests to gRPC calls for frontend clients.
