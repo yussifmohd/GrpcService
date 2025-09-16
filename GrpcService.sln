@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService.Tests.Integrati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", "{E0A2F35F-5ACF-4F4C-BCB6-5D57C3057A08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient", "BlazorClient\BlazorClient.csproj", "{379764E6-F971-4352-8966-3864B2CD1E7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E0A2F35F-5ACF-4F4C-BCB6-5D57C3057A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0A2F35F-5ACF-4F4C-BCB6-5D57C3057A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0A2F35F-5ACF-4F4C-BCB6-5D57C3057A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{379764E6-F971-4352-8966-3864B2CD1E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379764E6-F971-4352-8966-3864B2CD1E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379764E6-F971-4352-8966-3864B2CD1E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379764E6-F971-4352-8966-3864B2CD1E7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

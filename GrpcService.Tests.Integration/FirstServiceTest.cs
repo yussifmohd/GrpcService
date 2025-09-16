@@ -1,6 +1,5 @@
 using Basics;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace GrpcService.Tests.Integration
 {

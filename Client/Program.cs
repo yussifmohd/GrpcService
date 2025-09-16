@@ -1,15 +1,9 @@
 ﻿
 using Basics;
 using Grpc.Core;
-using Grpc.Health.V1;
 using Grpc.Net.Client;
-using Grpc.Net.Client.Balancer;
 using Grpc.Net.Client.Configuration;
 using Grpc.Reflection.V1Alpha;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-using System.Net.Security;
-using System.Threading.Tasks;
 using static Grpc.Reflection.V1Alpha.ServerReflection;
 
 var channelReflection = GrpcChannel.ForAddress("http://localhost:5084");
@@ -28,7 +22,6 @@ while (await call.ResponseStream.MoveNext())
         Console.WriteLine($"Service Name: {service.Name}");
     }
 }
-
 
 
 //Send Retry Requests whenver find StatusCode.Internal

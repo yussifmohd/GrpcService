@@ -1,0 +1,51 @@
+﻿@page "/Weather"
+@using Basics;
+@using Grpc.Core;
+@inject HttpClient Http
+@inject FirstServiceDefinition.FirstServiceDefinitionClient grpcClient;
+<PageTitle>Indexes</PageTitle>
+
+<h1>Server Streaming</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (responses == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var response in responses)
+            {
+                <tr>
+                    <td>@response.Message</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Response> responses = new List<Response>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var call = grpcClient.ServerStream(new Request() { Content = "hello!" });
+
+        await foreach (Response response in call.ResponseStream.ReadAllAsync())
+        {
+            await Task.Delay(1000);
+            responses.Add(response);
+            StateHasChanged();
+        }
+    }
+
+
+}

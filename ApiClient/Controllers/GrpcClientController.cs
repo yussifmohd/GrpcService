@@ -1,5 +1,4 @@
 ﻿using Basics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiClient.Controllers
