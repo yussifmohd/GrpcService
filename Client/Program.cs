@@ -1,16 +1,35 @@
 ﻿
-
-
 using Basics;
 using Grpc.Core;
 using Grpc.Health.V1;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Balancer;
 using Grpc.Net.Client.Configuration;
+using Grpc.Reflection.V1Alpha;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Security;
 using System.Threading.Tasks;
+using static Grpc.Reflection.V1Alpha.ServerReflection;
+
+var channelReflection = GrpcChannel.ForAddress("http://localhost:5084");
+var clientReflection = new ServerReflectionClient(channelReflection);
+var reflectionRequest = new ServerReflectionRequest { ListServices = "" };
+
+using var call = clientReflection.ServerReflectionInfo();
+await call.RequestStream.WriteAsync(reflectionRequest);
+await call.RequestStream.CompleteAsync();
+
+while (await call.ResponseStream.MoveNext())
+{
+    var response = call.ResponseStream.Current;
+    foreach (var service in response.ListServicesResponse.Service)
+    {
+        Console.WriteLine($"Service Name: {service.Name}");
+    }
+}
+
+
 
 //Send Retry Requests whenver find StatusCode.Internal
 var retryPolicy = new MethodConfig
@@ -50,10 +69,10 @@ var options = new GrpcChannelOptions
 using var channel = GrpcChannel.ForAddress("http://localhost:5084", options);
 
 //HEALTH CHECKS
-var health = new Health.HealthClient(channel);
-var healthResult = health.Check(new HealthCheckRequest());
+//var health = new Health.HealthClient(channel);
+//var healthResult = health.Check(new HealthCheckRequest());
 
-Console.WriteLine($"Health Status: {healthResult.Status}");
+//Console.WriteLine($"Health Status: {healthResult.Status}");
 
 
 //var factory = new StaticResolverFactory(addr =>
